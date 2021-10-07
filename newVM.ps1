@@ -2,6 +2,8 @@
 #Variables for a new vm
 #DO NOT RUN AS SITS RIGHT NOW!!!
 $vserver="vcenter.nicholas.local.nicholas.local"
+Connect-VIServer($vserver)
+Get-VM
 $vm=Get-VM -Name xubuntu-wan
 $snapshot = Get-Snapshot -VM $vm -Name "Base"
 $vmhost = Get-VMHost -Name "192.168.3.126"

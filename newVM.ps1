@@ -20,3 +20,4 @@ $vmhost = Get-VMHost -Name "192.168.3.126"
 Get-Datastore
 $ds = Read-Host -Prompt "Please choose a datastore for the VM to be stored on`n"
 $linkedorfull = Read-Host -Prompt "[L] Linked Clone`n[F] Full Clone`nPlease Choose an Option: "
+

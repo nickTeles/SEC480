@@ -21,3 +21,25 @@ Get-Datastore
 $ds = Read-Host -Prompt "Please choose a datastore for the VM to be stored on`n"
 $linkedorfull = Read-Host -Prompt "[L] Linked Clone`n[F] Full Clone`nPlease Choose an Option: "
 
+if ($linkedorfull -is [L])
+{
+    $linkedvm = New-VM -LinkedClone -Name $linkedname -VM $vm -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $ds
+} elseif ($linkedorfull -is [l])
+{
+    $linkedvm = New-VM -LinkedClone -Name $linkedname -VM $vm -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $ds
+} elseif ($linkedorfull -is [F])
+{
+    $linkedvm = New-VM -LinkedClone -Name $linkedname -VM $vm -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $ds
+    $newvm = New-VM -Name "xubuntu-20.04-base" -VM $linkedvm -VMHost $vmhost -Datastore $ds
+    $newvm | new-snapshot -Name "Base"
+    $linkedvm | Remove-VM
+} elseif ($linkedorfull -is [f])
+{
+    $linkedvm = New-VM -LinkedClone -Name $linkedname -VM $vm -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $ds
+    $newvm = New-VM -Name "xubuntu-20.04-base" -VM $linkedvm -VMHost $vmhost -Datastore $ds
+    $newvm | new-snapshot -Name "Base"
+    $linkedvm | Remove-VM
+} else {
+    print "Invalid Option"
+    Exit-PSHostProcess
+}

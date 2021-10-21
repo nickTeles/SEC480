@@ -20,15 +20,17 @@ if ($linkedorfull -eq "L")
 } elseif ($linkedorfull -eq "F")
 {
     $linkedname = "{0}.linked" -f $vm.name
+    $fullname = Read-Host -Prompt "VM Name: "
     $linkedvm = New-VM -LinkedClone -Name $linkedname -VM $vm -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $ds
-    $newvm = New-VM -Name "xubuntu-20.04-base" -VM $linkedvm -VMHost $vmhost -Datastore $ds
+    $newvm = New-VM -Name $fullname -VM $linkedvm -VMHost $vmhost -Datastore $ds
     $newvm | new-snapshot -Name "Base"
     $linkedvm | Remove-VM
 } elseif ($linkedorfull -eq "f")
 {
     $linkedname = "{0}.linked" -f $vm.name
+    $fullname = Read-Host -Prompt "VM Name: "
     $linkedvm = New-VM -LinkedClone -Name $linkedname -VM $vm -ReferenceSnapshot $snapshot -VMHost $vmhost -Datastore $ds
-    $newvm = New-VM -Name "xubuntu-20.04-base" -VM $linkedvm -VMHost $vmhost -Datastore $ds
+    $newvm = New-VM -Name $fullname -VM $linkedvm -VMHost $vmhost -Datastore $ds
     $newvm | new-snapshot -Name "Base"
     $linkedvm | Remove-VM
 } else {

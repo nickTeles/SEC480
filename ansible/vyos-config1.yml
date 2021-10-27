@@ -1,0 +1,16 @@
+#This playbook performs the initial config of blue7-fw
+- name: vyos network config
+  hosts: vyos
+  tasks:
+    -name: load vyos config from template
+    become: yes
+    template:
+    src: config.boot.j2
+      dest: /config/config.boot
+      mode: "0775"
+      owner: root
+      group: vyattacfg
+    -name: bounce and end
+      become: yes
+      shell: nohup bash -c "/usr/bin/sleep 5 && /usr/bin/shutdown -r how" &
+

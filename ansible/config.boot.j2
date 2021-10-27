@@ -1,0 +1,82 @@
+interfaces {
+    ethernet eth0 {
+        address {{wan_ip}}/24
+    }
+    ethernet eth1 {
+        address {{lan_ip}}/24
+    }
+    loopback lo {
+    }
+}
+nat {
+    source {
+        rule 10 {
+            outbound-interface eth0
+            source {
+                address {{ lan }}
+            }
+            translation {
+                address masqerade
+            }
+        }
+    }
+}
+protocols {
+    static {
+        route 0.0.0.0/0 {
+            next-hop {{ gateway }} {
+            }
+        }
+    }
+}
+service {
+    dns {
+        forwarding {
+            allow-from {{ lan }}
+            listen_address {{ lan_ip}}
+            name-server {{ name_server }}
+            system
+        }
+    }
+    ssh {
+        listen_address 0.0.0.0
+    }
+}
+system {
+    config-management {
+        commit-revisions 100
+    }
+    console {
+        device ttyS0 {
+            speed 115200
+        }
+    }
+    host-name {{ hostname }}
+    login {
+        user vyos {
+            authentication {
+                encrypted-password $6$2RTYZMupxzOX$3WYjk..CfWek8tszBGL9M/C1WVTCw321yxBCBySZGD1PbO.9z8r4yQ33.rUvC5h2PEfq4ICD7r8e1ObbNZItB1:18927:0:99999:7:::
+                plaintext-password ""
+            }
+        }
+    }
+    name_server {{ name_server }}
+    ntp {
+        server 0.pool.ntp {
+        }
+        server 1.pool.ntp.org {
+        }
+        server 2.pool.ntp.org {
+        }
+    }
+    syslog {
+        global {
+            facility all {
+                level info
+            }
+            facility protocols {
+                level debug
+            }
+        }
+    }
+}

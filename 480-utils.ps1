@@ -1,9 +1,17 @@
 #Created by Nicholas Teles
 $vserver="vcenter.nicholas.local.nicholas.local"
 Connect-VIServer($vserver)
-$createorstart = Read-Host -Prompt "[C] Create VM`n[S] Start VM`n[N]Change VM Network`n[M] Make New Network`n[I]`nPlease choose an option: "
+$createorstart = Read-Host -Prompt "[A] Ansible [C] Create VM`n[S] Start VM`n[N]Change VM Network`n[M] Make New Network`n[I] See IP Address`nPlease choose an option: "
+#Ansible
+if ($createorstart -eq "A") {
+    (Get-VMGuest -VM blue7-fw).IPAddress
+    ansible-playbook -i blue7-fw/vyos1.txt --user vyos --ask-pass vyos-config.yml
+} elseif ($createorstart -eq "a") {
+    (Get-VMGuest -VM blue7-fw).IPAddress
+    ansible-playbook -i blue7-fw/vyos1.txt --user vyos --ask-pass vyos-config.yml
+}
 #Change Network
-if ($createorstart -eq "N") {
+elseif ($createorstart -eq "N") {
     $vmnetworkname = Read-Host -Prompt "What VM would you like to change the network on? "
     $newnetworkname = Read-Host -Prompt "What do you want the new network to be? "
     Get-VM $vmnetworkname | Get-NetworkAdapter | Set-NetworkAdapter -NetworkName $newnetworkname

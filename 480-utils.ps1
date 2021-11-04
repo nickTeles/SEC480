@@ -5,10 +5,10 @@ $createorstart = Read-Host -Prompt "[A] Ansible [C] Create VM`n[S] Start VM`n[N]
 #Ansible
 if ($createorstart -eq "A") {
     (Get-VMGuest -VM blue7-fw).IPAddress
-    ansible-playbook -i blue7-fw/vyos1.txt --user vyos --ask-pass vyos-config.yml
+    ansible-playbook -i ansible/blue7-fw/vyos1.txt --user vyos --ask-pass ansible/vyos-config1.yml
 } elseif ($createorstart -eq "a") {
     (Get-VMGuest -VM blue7-fw).IPAddress
-    ansible-playbook -i blue7-fw/vyos1.txt --user vyos --ask-pass vyos-config.yml
+    ansible-playbook -i ansible/blue7-fw/vyos1.txt --user vyos --ask-pass ansible/vyos-config1.yml
 }
 #Change Network
 elseif ($createorstart -eq "N") {
@@ -33,18 +33,18 @@ elseif ($createorstart -eq "M") {
 #See IP Address
 elseif ($createorstart -eq "I") {
     $vmnameip = Read-Host -Prompt "VM to see the IP Address of: "
-    (Get-VMGuest -VM $vmnameip).IPAddress
+    (Get-VM -Name $vmnameip).Guest.IPAddress
 } elseif ($createorstart -eq "i") {
     $vmnameip = Read-Host -Prompt "VM to see the IP Address of: "
-    (Get-VMGuest -VM $vmnameip).IPAddress
+    (Get-VM -Name $vmnameip).Guest.IPAddress
 } 
 #Start VM
 elseif ($createorstart -eq "S") {
     $vmstartname = Read-Host -Prompt "vm to start: "
-    Start-VM -Name $vmstartname -vcenter_server "vcenter.nicholas.local.nicholas.local" -Force $true
+    Start-VM $vmstartname
 } elseif ($createorstart -eq "s") {
     $vmstartname = Read-Host -Prompt "vm to start: "
-    Start-VM -Name $vmstartname -vcenter_server "vcenter.nicholas.local.nicholas.local" -Force $true
+    Start-VM $vmstartname
 } 
 #Create VM
 elseif ($createorstart -eq "C") {

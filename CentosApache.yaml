@@ -1,0 +1,20 @@
+- name: Install httpd
+  hosts: 10.0.5.244
+  tasks:
+  - name: Install packages
+    yum:
+      name: httpd
+      state: present
+  - name: start httpd
+    service:
+      name: httpd
+      state: started
+  - name: open firewall port
+    firewalld:
+      service: http
+      permanent: true
+      state: enabled
+  - name: reload firewall
+    service:
+      name: firewalld
+      state: restarted

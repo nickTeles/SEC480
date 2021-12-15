@@ -1,0 +1,14 @@
+---
+- name: windows-remote-access
+  hosts: servers
+  gather_facts: no
+
+  tasks:
+    - name: software install
+      win_chocolatey:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - googlechrome
+        - notepadplusplus
+        - putty

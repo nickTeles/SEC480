@@ -1,0 +1,7 @@
+[winhosts]
+10.0.5.6
+
+[winhosts:vars]
+domain_admin_user="nicholas-adm"
+domain_admin_password="Yankees#9900"
+dns_domain_name="nicholas.local"

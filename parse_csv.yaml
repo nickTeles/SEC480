@@ -39,3 +39,16 @@
       groups: 
         - "{{ item.group }}"
     with_items: "{{ accounts.list }}"
+
+  - name: laa share folder
+    win_file:
+      path: C:\shares\laa
+      state: directory
+
+  - name: smb share
+    win_share:
+      name: LAA
+      path: C:\shares\laa
+      list: no
+      full: LAA
+      deny: HOU,OAK,TOR,CLE,SEA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA

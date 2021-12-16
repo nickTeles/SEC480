@@ -1,0 +1,393 @@
+- name: parsecsv
+  hosts: 10.0.5.5
+
+  tasks:
+  - name: laa share folder
+    win_file:
+      path: C:\shares\laa
+      state: directory
+
+  - name: hou share folder
+    win_file:
+      path: C:\shares\hou
+      state: directory
+
+  - name: oak share folder
+    win_file:
+      path: C:\shares\oak
+      state: directory
+
+  - name: tor share folder
+    win_file:
+      path: C:\shares\tor
+      state: directory
+
+  - name: cle share folder
+    win_file:
+      path: C:\shares\cle
+      state: directory
+
+  - name: sea share folder
+    win_file:
+      path: C:\shares\sea
+      state: directory
+
+  - name: bal share folder
+    win_file:
+      path: C:\shares\bal
+      state: directory
+
+  - name: tex share folder
+    win_file:
+      path: C:\shares\tex
+      state: directory
+
+  - name: tba share folder
+    win_file:
+      path: C:\shares\tba
+      state: directory
+
+  - name: bos share folder
+    win_file:
+      path: C:\shares\bos
+      state: directory
+
+  - name: kca share folder
+    win_file:
+      path: C:\shares\kca
+      state: directory
+
+  - name: det share folder
+    win_file:
+      path: C:\shares\det
+      state: directory
+
+  - name: min share folder
+    win_file:
+      path: C:\shares\min
+      state: directory
+
+  - name: nya share folder
+    win_file:
+      path: C:\shares\nya
+      state: directory
+
+  - name: mil share folder
+    win_file:
+      path: C:\shares\mil
+      state: directory
+
+  - name: sln share folder
+    win_file:
+      path: C:\shares\sln
+      state: directory
+
+  - name: chn share folder
+    win_file:
+      path: C:\shares\chn
+      state: directory
+
+  - name: ari share folder
+    win_file:
+      path: C:\shares\ari
+      state: directory
+
+  - name: lan share folder
+    win_file:
+      path: C:\shares\lan
+      state: directory
+
+  - name: sfg share folder
+    win_file:
+      path: C:\shares\sfg
+      state: directory
+
+  - name: nyn share folder
+    win_file:
+      path: C:\shares\nyn
+      state: directory
+
+  - name: was share folder
+    win_file:
+      path: C:\shares\was
+      state: directory
+
+  - name: sdn share folder
+    win_file:
+      path: C:\shares\sdn
+      state: directory
+
+  - name: pit share folder
+    win_file:
+      path: C:\shares\pit
+      state: directory
+
+  - name: cin share folder
+    win_file:
+      path: C:\shares\cin
+      state: directory
+
+  - name: col share folder
+    win_file:
+      path: C:\shares\col
+      state: directory
+
+  - name: atl share folder
+    win_file:
+      path: C:\shares\atl
+      state: directory
+
+  - name: mia share folder
+    win_file:
+      path: C:\shares\mia
+      state: directory
+
+  - name: phi share folder
+    win_file:
+      path: C:\shares\phi
+      state: directory
+
+  - name: cha share folder
+    win_file:
+      path: C:\shares\cha
+      state: directory
+
+  - name: smb share
+    win_share:
+      name: LAA
+      path: C:\shares\laa
+      list: no
+      full: LAA
+      deny: HOU,OAK,TOR,CLE,SEA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: HOU
+      path: C:\shares\hou
+      list: no
+      full: HOU
+      deny: LAA,OAK,TOR,CLE,SEA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: OAK
+      path: C:\shares\oak
+      list: no
+      full: OAK
+      deny: HOU,LAA,TOR,CLE,SEA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: TOR
+      path: C:\shares\tor
+      list: no
+      full: TOR
+      deny: HOU,OAK,LAA,CLE,SEA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: CLE
+      path: C:\shares\cle
+      list: no
+      full: CLE
+      deny: HOU,OAK,TOR,LAA,SEA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: SEA
+      path: C:\shares\sea
+      list: no
+      full: SEA
+      deny: HOU,OAK,TOR,CLE,LAA,BAL,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: BAL
+      path: C:\shares\bal
+      list: no
+      full: BAL
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: TEX
+      path: C:\shares\tex
+      list: no
+      full: TEX
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,BAL,TBA,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: TBA
+      path: C:\shares\tba
+      list: no
+      full: TBA
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,BAL,BOS,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: BOS
+      path: C:\shares\bos
+      list: no
+      full: BOS
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BAL,KCA,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: KCA
+      path: C:\shares\kca
+      list: no
+      full: KCA
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,BAL,DET,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: DET
+      path: C:\shares\det
+      list: no
+      full: DET
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,BAL,MIN,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: MIN
+      path: C:\shares\min
+      list: no
+      full: MIN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: NYA
+      path: C:\shares\nya
+      list: no
+      full: NYA
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,MIN,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: MIL
+      path: C:\shares\mil
+      list: no
+      full: MIL
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIN,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: SLN
+      path: C:\shares\sln
+      list: no
+      full: SLN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,MIN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: CHN
+      path: C:\shares\chn
+      list: no
+      full: CHN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,MIN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: ARI
+      path: C:\shares\ari
+      list: no
+      full: ARI
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,MIN,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: LAN
+      path: C:\shares\lan
+      list: no
+      full: LAN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,MIN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: SFG
+      path: C:\shares\sfg
+      list: no
+      full: SFG
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,MIN,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: NYN
+      path: C:\shares\nyn
+      list: no
+      full: NYN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,MIN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: WAS
+      path: C:\shares\was
+      list: no
+      full: WAS
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,MIN,SDN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: SDN
+      path: C:\shares\sdn
+      list: no
+      full: SDN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,MIN,PIT,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: PIT
+      path: C:\shares\pit
+      list: no
+      full: PIT
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,MIN,CIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: CIN
+      path: C:\shares\cin
+      list: no
+      full: CIN
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,MIN,COL,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: COL
+      path: C:\shares\col
+      list: no
+      full: COL
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,MIN,ATL,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: ATL
+      path: C:\shares\atl
+      list: no
+      full: ATL
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,MIN,MIA,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: MIA
+      path: C:\shares\mia
+      list: no
+      full: MIA
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIN,PHI,CHA
+
+  - name: smb share
+    win_share:
+      name: PHI
+      path: C:\shares\phi
+      list: no
+      full: PHI
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,MIN,CHA
+
+  - name: smb share
+    win_share:
+      name: CHA
+      path: C:\shares\cha
+      list: no
+      full: CHA
+      deny: HOU,OAK,TOR,CLE,SEA,LAA,TEX,TBA,BOS,KCA,DET,BAL,NYA,MIL,SLN,CHN,ARI,LAN,SFG,NYN,WAS,SDN,PIT,CIN,COL,ATL,MIA,PHI,MIN

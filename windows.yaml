@@ -5,12 +5,25 @@ windows:
       hosts:
         10.0.5.5:
           hostname: dc-blue7
+        10.0.5.6:
+          hostname: fs-blue7
+      vars: 
+        ansible_shell_type: powershell
+
+    workstations:
+      hosts:
+        10.0.5.80:
+          hostname: wks1
+        10.0.5.81:
+          hostname: wks2 
+      vars: 
+        ansible_shell_type: powershell
 
   vars:
-    ansible_user: deployer
+    ansible_user: Administrator@blue7
     device: Ethernet0
     netmask: 255.255.255.0
     gateway: 10.0.5.2
     name_server: 10.0.5.5
     domain: blue7.local
-    ansible_shell_type: powershell
+    #ansible_shell_type: powershell

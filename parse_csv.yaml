@@ -1,0 +1,33 @@
+
+---
+# This playbook shows how to parse a csv file
+- name: parsecsv
+  hosts: 10.0.5.5
+
+  tasks:
+  - name: read csv file
+    read_csv:
+      path: ./accounts.csv
+    register: accounts
+    delegate_to: 127.0.0.1
+
+  - name: ansible loop
+      #debug:
+        #msg: "{{ item.account_name }} - {{ item.group }}"
+    win_domain_user:
+      name: "{{ item.account_name }}"
+      password: "{{ item.password }}"
+      state: present
+      path: "CN={{ item.name }},CN={{ item.account_name }},OU=Groups,OU=Accounts,OU=blue7,DC=local"
+      groups: "{{ item.group }}"
+    with_items: "{{ accounts.list }}"
+
+#    - name: group_file
+#      command: cat files/groups.txt
+#      register: groupnames
+#      delegate_to: 127.0.0.1
+
+#      - name: groupnames loop
+#        debug:
+#          msg: "{{ item }}"
+#      with_items: "{{ groupnames.stdout_lines }}"

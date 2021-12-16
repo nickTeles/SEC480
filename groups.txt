@@ -1,4 +1,3 @@
-team
 LAA
 HOU
 OAK

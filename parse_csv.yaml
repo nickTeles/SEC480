@@ -5,6 +5,21 @@
   hosts: 10.0.5.5
 
   tasks:
+  - name: group_file
+    command: cat ./groups.txt
+    register: groupnames
+    delegate_to: 127.0.0.1
+
+  - name: groupnames loop
+     #debug:
+     #  msg: "{{ item }}"
+    win_domain_group:
+      name: "{{ item }}"
+      path: "OU=Groups,OU=Accounts,OU=blue7,DC=blue7,DC=local"
+      scope: global
+      state: present
+    with_items: "{{ groupnames.stdout_lines }}"
+
   - name: read csv file
     read_csv:
       path: ./accounts.csv
@@ -16,18 +31,11 @@
         #msg: "{{ item.account_name }} - {{ item.group }}"
     win_domain_user:
       name: "{{ item.account_name }}"
+      path: "OU=Accounts,OU=blue7,DC=blue7,DC=local"
       password: "{{ item.password }}"
-      state: present
-      path: "CN={{ item.name }},CN={{ item.account_name }},OU=Groups,OU=Accounts,OU=blue7,DC=local"
-      groups: "{{ item.group }}"
+      password_never_expires: yes
+      update_password: on_create
+      state: present      
+      groups: 
+        - "{{ item.group }}"
     with_items: "{{ accounts.list }}"
-
-#    - name: group_file
-#      command: cat files/groups.txt
-#      register: groupnames
-#      delegate_to: 127.0.0.1
-
-#      - name: groupnames loop
-#        debug:
-#          msg: "{{ item }}"
-#      with_items: "{{ groupnames.stdout_lines }}"
